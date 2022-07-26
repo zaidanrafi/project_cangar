@@ -1,0 +1,67 @@
+<template>
+  <div class=" w-screen h-14 z-20 absolute" style="background-color:#25A18E;">
+    <div class=" flex flex-row text-center items-center h-full justify-between pl-5">
+        <section class=" font-bold text-lg">
+            LOGO
+        </section>
+        <section class="flex">
+          <router-link @click="openMenu = false" to="/" class=" h-full items-center justify-center flex px-7 hover:text-blue-1 transition-colors duration-200">
+            home
+          </router-link>
+          <button v-if="mobile == true" @click="openMenu = !openMenu" class="mr-5 h-auto flex">
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" class=" fill-current" width="25" height="25" viewBox="0 0 50 50" style=" "><path d="M 0 7.5 L 0 12.5 L 50 12.5 L 50 7.5 Z M 0 22.5 L 0 27.5 L 50 27.5 L 50 22.5 Z M 0 37.5 L 0 42.5 L 50 42.5 L 50 37.5 Z"></path></svg>
+          </button>
+        </section>
+        <section v-if="mobile == false" class="flex h-full items-center flex-row">
+            <router-link to="/" class=" h-full items-center justify-center flex border-l-2 px-7 border-dark-green hover:bg-dark-green transition-colors duration-200">
+                home
+            </router-link>
+            <router-link to="/marlet" class=" h-full items-center justify-center flex border-l-2 px-7 border-dark-green hover:bg-dark-green transition-colors duration-200">
+                Market
+            </router-link>
+            <router-link to="/data" class=" h-full items-center justify-center flex border-l-2 px-7 border-dark-green hover:bg-dark-green transition-colors duration-200">
+                Monitoring
+            </router-link>
+            <router-link to="/about-us" class=" h-full items-center justify-center flex border-l-2 px-7 border-dark-green hover:bg-dark-green transition-colors duration-200">
+                About us
+            </router-link>
+        </section>
+    </div>
+  </div>
+  <transition name="slide">
+    <Menu @close-menu="openMenu = false" v-if="openMenu == true && mobile == true"/>
+  </transition>
+</template>
+
+<script>
+import Menu from './mobilemenu.vue'
+export default {
+components:{Menu},
+data(){
+    return{
+        mobile: true,
+        openMenu:false,
+    }
+}
+}
+</script>
+
+<style>
+.slide-enter-active {
+  transition: all .4s ease;
+}
+.slide-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-enter-from{
+    transform: translateY(-200px);
+}
+.slide-enter-to{
+    transform: translateY(0px);
+}
+.slide-leave-to
+/* .slide-fade-leave-active below version 2.1.8 */ {
+  transform: translateY(-200px);
+
+}
+</style>
