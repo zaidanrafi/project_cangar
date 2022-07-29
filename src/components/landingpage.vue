@@ -1,5 +1,6 @@
 <template>
   <div v-if="openLogin == true || openRegister == true || openLupaPassword == true" @click="openLogin = false; openRegister = false; openLupaPassword = false" class="z-20 bg-gray-7 opacity-60 w-screen h-screen absolute top-0" style="backdrop-filter: blur(5px);"></div>
+  
   <div class="w-screen z-10 h-screen overflow-x-hidden" style="background-image: url('https://i.postimg.cc/ht3yKjwg/bg-fix.jpg'); background-size:cover; background-repeat: no-repeat; background-attachment: fixed;">
     <div class="flex flex-col pl-10 md:pl-24 pr-8 pt-16">
         <section class=" text-white text-4xl sm:text-5xl text-center sm:text-left md:text-6xl lg:text-7xl pt-16">
@@ -28,6 +29,7 @@
 import login from './login.vue'
 import register from './register.vue'
 import lupapassword from './lupapassword.vue'
+
 import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
 export default {
 components:{login, register, lupapassword},
@@ -38,6 +40,7 @@ data(){
     openLupaPassword:false,
     isLoggedIn:"",
     isVerified: false,
+
   }
 },
 mounted(){
