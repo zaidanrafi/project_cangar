@@ -30,13 +30,12 @@
                 </div>
                 </transition>
               </div>
-              
               <router-link to="/data" class=" h-full items-center justify-center flex border-l-2 px-7 border-dark-green hover:bg-dark-green transition-colors duration-200">
                   Monitoring
               </router-link>
               <a href="http://atp.ub.ac.id/profil/" @click="isLoading = true" class=" h-full items-center justify-center flex border-l-2 px-7 border-dark-green hover:bg-dark-green transition-colors duration-200">about us</a>
           </section>
-        </section>
+        </section>   
     </div>
   </div>
   <transition name="slide">
