@@ -1,5 +1,6 @@
 <template>
   <div v-if="openMenu == true" @click="openMenu = false" class=" z-20 bg-gray-7 opacity-60 w-screen h-screen absolute top-0" style="backdrop-filter: blur(5px);"></div>
+  <loading v-if="isLoading == true" />
   <div class=" w-screen z-30 h-14 absolute" style="background-color:#25A18E;">
     <div class=" flex flex-row text-center items-center h-full justify-between pl-5">
         <section class=" font-bold text-lg">
@@ -18,18 +19,23 @@
               <router-link v-if="mobile == true" to="/" class=" h-full items-center justify-center flex border-l-2 px-7 border-dark-green hover:bg-dark-green transition-colors duration-200">
                   home
               </router-link>
-              <router-link to="/marlet" class=" h-full items-center justify-center flex border-l-2 px-7 border-dark-green hover:bg-dark-green transition-colors duration-200">
-                  Market
-              </router-link>
+              <div @mouseleave="openMarket = false" @mouseover="openMarket = true"  class="h-full">
+                <button  class=" z-10 peer h-full items-center justify-center flex border-l-2 px-11 border-dark-green hover:bg-dark-green transition-colors duration-200">
+                    Market
+                </button>
+                <transition name="fade">
+                <div v-if="openMarket == true"  class="flex z-0 hover:flex w-auto flex-col bg-white drop-shadow-lg">
+                  <a @click="isLoading = true" class="px-5 py-3 border-t border-dark-green bg-light-green hover:bg-dark-green" href="http://atp.ub.ac.id/barang/">Barang</a>
+                  <a @click="isLoading = true" class="px-5 py-3 border-t border-dark-green bg-light-green hover:bg-dark-green" href="http://atp.ub.ac.id/jasa/">Layanan</a>
+                </div>
+                </transition>
+              </div>
               <router-link to="/data" class=" h-full items-center justify-center flex border-l-2 px-7 border-dark-green hover:bg-dark-green transition-colors duration-200">
                   Monitoring
               </router-link>
-              <router-link to="/about-us" class=" h-full items-center justify-center flex border-l-2 px-7 border-dark-green hover:bg-dark-green transition-colors duration-200">
-                  About us
-              </router-link>
+              <a href="http://atp.ub.ac.id/profil/" @click="isLoading = true" class=" h-full items-center justify-center flex border-l-2 px-7 border-dark-green hover:bg-dark-green transition-colors duration-200">about us</a>
           </section>
-        </section>
-        
+        </section>   
     </div>
   </div>
   <transition name="slide">
@@ -39,14 +45,17 @@
 
 <script>
 import Menu from './mobilemenu.vue'
+import loading from './loading.vue'
 export default {
-components:{Menu},
+components:{Menu, loading},
 props:{"isLoggedIn": Boolean},
 data(){
     return{
         //mobile: true,
         mobile:window.innerWidth <= 700,
         openMenu:false,
+        openMarket:false,
+        isLoading:false,
     }
 }
 }
@@ -69,5 +78,15 @@ data(){
 /* .slide-fade-leave-active below version 2.1.8 */ {
   transform: translateY(-200px);
 
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
