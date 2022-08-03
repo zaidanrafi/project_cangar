@@ -1,5 +1,5 @@
 <template>
-  <div v-if="openMenu == true" @click="openMenu = false" class=" z-20 bg-gray-7 opacity-60 w-screen h-screen absolute top-0" style="backdrop-filter: blur(5px);"></div>
+  <div v-if="openMenu == true" @click="openMarket = false; openMenu = false" class=" z-20 bg-black opacity-60 w-screen h-screen absolute top-0" style="backdrop-filter: blur(5px);"></div>
   <loading v-if="isLoading == true" />
   <div class=" w-screen z-30 h-14 absolute" style="background-color:#25A18E;">
     <div class=" flex flex-row text-center items-center h-full justify-between pl-5">
@@ -39,7 +39,7 @@
     </div>
   </div>
   <transition name="slide">
-    <Menu @close-menu="openMenu = false" v-if="openMenu == true && mobile == true"/>
+    <Menu @close-menu="openMenu = false" v-if="openMenu == true && mobile == true" @loading="isLoading = true" />
   </transition>
 </template>
 
@@ -47,17 +47,25 @@
 import Menu from './mobilemenu.vue'
 import loading from './loading.vue'
 export default {
-components:{Menu, loading},
-props:{"isLoggedIn": Boolean},
-data(){
-    return{
-        //mobile: true,
-        mobile:window.innerWidth <= 700,
-        openMenu:false,
-        openMarket:false,
-        isLoading:false,
-    }
-}
+  components:{Menu, loading},
+  props:{'isVerified': Boolean, 'isLoggedIn': Boolean},
+  data(){
+      return{
+          //mobile: true,
+          mobile:window.innerWidth <= 700,
+          openMenu:false,
+          openMarket:false,
+          isLoading:false,
+      }
+  },
+  methods:{
+    askverify(){
+      alert('verifikasi email anda untuk melanjutkan');
+    },
+    asklogin(){
+      alert('login untuk melanjutkan');
+    },
+  }
 }
 </script>
 

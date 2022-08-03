@@ -54,7 +54,7 @@ data(){
             .then(() => {
                 this.isLoading = false;
                 this.sent = true;
-                alert('permintaan reset password telah dikirim ke email anda');
+                //alert('permintaan reset password telah dikirim ke email anda');
               // ..
             })
             .catch((error) => {

@@ -10,10 +10,10 @@
             <div class="w-11/12 sm:w-3/4">We keep a close eye on the various factors affecting your plants, so maintains optimal growing conditions, minimize problems, and maximize yields.</div>
         </section>
         <section class=" pt-40 sm:pt-24 w-full sm:w-auto flex justify-center sm:justify-start">
-            <button v-if="isLoggedIn == true && isVerified == true" @click="logout()" class=" bg-light-green px-16 py-3 rounded-2xl text-lg hover:bg-dark-green transition-colors duration-200">
+            <button v-if="isLoggedIn == true" @click="logout()" class=" bg-light-green px-16 py-3 rounded-2xl text-lg hover:bg-dark-green transition-colors duration-200">
               <span>KELUAR</span>
             </button>
-            <button @click="openLogin = true" v-else class=" bg-light-green px-16 py-3 rounded-2xl text-lg hover:bg-dark-green transition-colors duration-200">
+            <button v-else @click="openLogin = true"  class=" bg-light-green px-16 py-3 rounded-2xl text-lg hover:bg-dark-green transition-colors duration-200">
               <span>MASUK</span>
             </button>
         </section>
@@ -53,7 +53,7 @@ mounted(){
           this.isLoggedIn = true;
           if(user.emailVerified == true){
             this.isVerified = true;
-            alert('email telah diverifikasi');
+            //alert('email telah diverifikasi');
             //this.openLogin = true;
           }
           // ...
