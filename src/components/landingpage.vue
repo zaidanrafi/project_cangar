@@ -28,7 +28,6 @@
 import login from './login.vue'
 import register from './register.vue'
 import lupapassword from './lupapassword.vue'
-
 import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
 export default {
 components:{login, register, lupapassword},
@@ -39,7 +38,6 @@ data(){
     openLupaPassword:false,
     isLoggedIn:"",
     isVerified: false,
-
   }
 },
 mounted(){
