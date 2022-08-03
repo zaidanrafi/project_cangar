@@ -2,7 +2,7 @@
   <div class="absolute top-0 w-full h-full">
       <div class="flex w-full justify-center items-center h-full">
           <div class=" bg-gray-1 z-30 w-10/12 sm:w-2/5 rounded-2xl">
-              <section v-if="emailSent == false" class=" text-right mr-3 mt-1 ">
+              <section class=" text-right mr-3 mt-1 ">
                   <button @click="$emit('close-register')" class=" font-semibold text-xl">x</button>
               </section>
               <section class="w-full text-center pt-7 text-2xl font-bold pb-8">
@@ -25,7 +25,7 @@
                             <span v-if="isLoading == true">loading...</span>
                           </button>
                           <button type="submit" v-else class=" bg-blue-purple hover:bg-opacity-80 transition-colors duration-200 py-2 px-7 rounded-lg">
-                              <span v-if="isLoading == false">send email verification</span>
+                              <span v-if="isLoading == false">DAFTAR</span>
                               <span v-if="isLoading == true">loading...</span> 
                           </button>
                       </section>

@@ -1,8 +1,8 @@
 <template>
-  <Header />
+  <Header :isVerified="isVerified" :isLoggedIn="isLoggedIn" />
 
   
-  <router-view></router-view>
+  <router-view ></router-view>
 </template>
 
 <script>
@@ -16,7 +16,8 @@ components:{ Header},
 data(){
     return{
       isLoginOpen: true,
-      isLoggedIn:""
+      isLoggedIn:"",
+      isVerified:"",
     };
   },
   mounted(){
@@ -30,6 +31,13 @@ data(){
             //console.log(user.displayName);
             //console.log(user.emailVerified);
             this.isLoggedIn = true;
+            if(user.emailVerified == true){
+              this.isVerified = true;
+            }
+            else{
+              this.isVerified = false;
+            }
+
             // ...
         } else {
             // User is signed out
